@@ -69,11 +69,17 @@ type alias DaysMonthsYears =
 parser1 : Parser DaysMonthsYears
 parser1 =
     succeed DaysMonthsYears
+        |. spaces
         |= parseDay
+        |. spaces
         |. seperator
+        |. spaces
         |= parseMonth
+        |. spaces
         |. seperator
+        |. spaces
         |= parseYear
+        |. spaces
         |. end
 
 
