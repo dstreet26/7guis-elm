@@ -1,8 +1,9 @@
 module Two exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, text)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div, input, text)
+import Html.Attributes exposing (style, value)
+import Html.Events exposing (onInput)
 
 
 main =
@@ -10,33 +11,62 @@ main =
 
 
 type alias Model =
-    Int
+    { celcius : Float
+    , fahrenheit : Float
+    }
 
 
 init : Model
 init =
-    0
+    { celcius = 0
+    , fahrenheit = 0
+    }
 
 
 type Msg
-    = Increment
-    | Decrement
+    = ChangeCelcius String
+    | ChangeFahrenheit String
 
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Increment ->
-            model + 1
+        ChangeCelcius x ->
+            let
+                newCelcius =
+                    case String.toFloat x of
+                        Nothing ->
+                            model.celcius
 
-        Decrement ->
-            model - 1
+                        Just f ->
+                            f
+
+                newFahrenheit =
+                    newCelcius * (9 / 5) + 32
+            in
+            { model | celcius = newCelcius, fahrenheit = newFahrenheit }
+
+        ChangeFahrenheit x ->
+            let
+                newFahrenheit =
+                    case String.toFloat x of
+                        Nothing ->
+                            model.fahrenheit
+
+                        Just f ->
+                            f
+
+                newCelcius =
+                    (newFahrenheit - 32) * (5 / 9)
+            in
+            { model | celcius = newCelcius, fahrenheit = newFahrenheit }
 
 
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromInt model) ]
-        , button [ onClick Increment ] [ text "+" ]
+        [ div [ style "float" "left" ] [ input [ style "width" "80px", value (String.fromFloat model.celcius), onInput ChangeCelcius ] [] ]
+        , div [ style "float" "left", style "margin-left" "10px" ] [ text "Celcius =" ]
+        , div [ style "float" "left", style "margin-left" "10px" ] [ input [ style "width" "60px", value (String.fromFloat model.fahrenheit), onInput ChangeFahrenheit ] [] ]
+        , div [ style "margin-left" "10px", style "margin-left" "10px" ] [ text "Fahrenheit" ]
         ]
