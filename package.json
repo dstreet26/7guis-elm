@@ -1,0 +1,24 @@
+{
+  "name": "7guis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "one": "parcel src/one.html",
+    "two": "parcel src/two.html",
+    "three": "parcel src/three.html",
+    "four": "parcel src/four.html",
+    "five": "parcel src/five.html",
+    "six": "parcel src/six.html",
+    "seven": "parcel src/seven.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.5.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-elm": "^2.5.0",
+    "elm": "^0.19.1-5"
+  }
+}
