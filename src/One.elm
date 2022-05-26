@@ -1,7 +1,8 @@
 module One exposing (..)
 
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, input, text)
+import Html.Attributes exposing (style, value)
 import Html.Events exposing (onClick)
 
 
@@ -20,7 +21,6 @@ init =
 
 type Msg
     = Increment
-    | Decrement
 
 
 update : Msg -> Model -> Model
@@ -29,14 +29,10 @@ update msg model =
         Increment ->
             model + 1
 
-        Decrement ->
-            model - 1
-
 
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromInt model) ]
-        , button [ onClick Increment ] [ text "+" ]
+        [ div [ style "float" "left" ] [ input [ style "width" "60px", value (String.fromInt model) ] [] ]
+        , button [ style "margin-left" "10px", onClick Increment ] [ text "Count" ]
         ]
