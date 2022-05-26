@@ -138,7 +138,7 @@ update msg model =
                 | people =
                     List.map
                         (\person ->
-                            if person.name == model.updateName then
+                            if person.name == model.updateName || person.surname == model.updateSurname then
                                 { name = model.updateName, surname = model.updateSurname }
 
                             else
