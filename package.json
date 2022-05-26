@@ -10,15 +10,18 @@
     "four": "parcel src/four.html",
     "five": "parcel src/five.html",
     "six": "parcel src/six.html",
-    "seven": "parcel src/seven.html"
+    "seven": "parcel src/seven.html",
+    "format": "prettier --write \"./src/**/*.{js,html,elm}\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^2.5.0"
+    "parcel": "^2.5.0",
+    "prettier-plugin-elm": "^0.8.0"
   },
   "devDependencies": {
     "@parcel/transformer-elm": "^2.5.0",
-    "elm": "^0.19.1-5"
+    "elm": "^0.19.1-5",
+    "prettier": "^2.6.2"
   }
 }
