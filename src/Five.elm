@@ -125,13 +125,17 @@ update msg model =
             )
 
         CreateClicked ->
-            ( { model
-                | people = model.people ++ [ { name = model.updateName, surname = model.updateSurname } ]
-                , updateName = ""
-                , updateSurname = ""
-              }
-            , Cmd.none
-            )
+            if String.length model.updateName > 0 && String.length model.updateSurname > 0 then
+                ( { model
+                    | people = model.people ++ [ { name = model.updateName, surname = model.updateSurname } ]
+                    , updateName = ""
+                    , updateSurname = ""
+                  }
+                , Cmd.none
+                )
+
+            else
+                ( model, Cmd.none )
 
         UpdateClicked ->
             ( { model
