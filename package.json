@@ -15,13 +15,11 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "parcel": "^2.5.0",
-    "prettier-plugin-elm": "^0.8.0"
-  },
   "devDependencies": {
-    "@parcel/transformer-elm": "^2.5.0",
+    "@parcel/transformer-elm": "^2.8.3",
     "elm": "^0.19.1-5",
-    "prettier": "^2.6.2"
+    "parcel": "^2.8.3",
+    "prettier": "^2.8.7",
+    "prettier-plugin-elm": "^0.10.0"
   }
 }
